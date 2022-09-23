@@ -50,7 +50,7 @@ def getFile(fileId):
 
 
 def forwardAll(sourceRoom, targetRoom):
-    for i in range(1,100000):
+    for i in range(1,msgCount):
         try:
             req = requests.get(url+'/copyMessage?chat_id={}&from_chat_id={}&message_id={}'.format(targetRoom,sourceRoom, i))
             print(req.text)
