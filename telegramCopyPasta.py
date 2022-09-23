@@ -8,7 +8,7 @@ botKey = config['botKey']
 url = urlBase + botKey
 sourceRoom = config['sourceRoom']
 targetRoom =  config['targetRoom']
-msgCount = config['msgCount']
+msgCount = int(config['msgCount'])
 user_id = 0
 
 def getMe():
@@ -28,7 +28,7 @@ def getChatAdministrators(room):
     print(req.text)
 
 def getChatMember(room, user):
-    req = requests.get(url+'/getChatAdministrators?chat_id={}&user_id={}'.format(room, user))
+    req = requests.get(url+'/getChatMember?chat_id={}&user_id={}'.format(room, user))
     print(req.text)
 
 def getWebhook():
@@ -60,10 +60,10 @@ def forwardAll(sourceRoom, targetRoom):
 
 
 getMe()
-getUpdates()
+#getUpdates()
 getWebhook()
 getChat(sourceRoom)
 getChatAdministrators(sourceRoom)
-#forwardAll(sourceRoom, targetRoom)
+forwardAll(sourceRoom, targetRoom)
 #deleteWebhook()
 #getFile('')
